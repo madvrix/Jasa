@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <div class="container px-lg-5"> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h1 class="text-center">DETAIL</h1><br>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="width: 45rem; margin-left: 15%;">
+                <img style="width: 20%; margin-left: 40%;" class="card-img-top" src="{{data.foto.url}}" alt="Card image cap">
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <!-- <li class="list-group-item">Format : {{data.foto}}</li> -->
+                    <li class="list-group-item">No Id : {{data.no_id}}</li>
+                    <li class="list-group-item">Judul : {{data.nama}}</li>
+                    <li class="list-group-item">Kelamin : {{data.kelamin}}</li>
+                    <li class="list-group-item">Alamat : {{data.alamat}}</li>
+                    <li class="list-group-item">No hp : {{data.nohp}}</li>
+                    <li class="list-group-item">Usia : {{data.usia}}</li>
+                    <li class="list-group-item">Biaya : {{data.biaya}}</li>
+                    <li class="list-group-item">Link : {{data.link}}</li>
+                    <li class="list-group-item">Catatan : {{data.catatan}}</li>
+                    <li class="list-group-item">download portofolio
+                        <a href="{{ data.portofolio.url }}" download  class="btn btn-dark float-right">Download</a>
+                    </li>
+                </ul>
+                <div class="card-body">
+                    <a href="{% url 'pengajar' %}" style="margin-left: 77%;" class="btn btn-danger" class="card-link">Back</a>
+                </div>
+                </div>
+              </div>
+                                
+ {% endblock %}

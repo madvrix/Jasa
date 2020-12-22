@@ -1,0 +1,48 @@
+{% extends 'style.html' %}
+{% load static %}
+{% block content %}
+{%load crispy_forms_tags %}
+
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Paket Forms</h2>
+                </div>
+                <div class="card-body">
+                    {% if registered %}
+                    <table width="100%">
+                        <tr>
+                            <td>Nama Paket</td>
+                            <td>{{pct.nama_pkt}}</td>
+                        </tr>
+                        <tr>
+                            <td>Jumlah Pertemuan </td>
+                            <td>{{pct.jml_pertemuan}}</td>
+                        </tr>
+                        <tr>
+                            <td>Biaya</td>
+                            <td>{{pct.biaya}}</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="cv-caption text-center">
+                        <a href="/customer/{{pct.no_pkt}}/hari" class="border-btn2 border-btn4">Pilih Hari & Jam</a>
+                    </div>
+                    {% else %}
+                    <form enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    {{ pkts|crispy}}
+                        
+                    <input type="submit" name="" value="Register">
+                        
+                    </form>    
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

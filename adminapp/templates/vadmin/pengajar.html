@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container-scroller">
+  <!-- partial:partials/_navbar.html -->
+  <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+      <a class="navbar-brand brand-logo" href="#">
+        <img src="{% static 'assets/images/logo.svg' %}" alt="logo" /> </a>
+      <a class="navbar-brand brand-logo-mini" href="#">
+        <img src="{% static 'assets/images/logo-mini.svg' %}" alt="logo" /> </a>
+    </div>
+    <div class="navbar-menu-wrapper d-flex align-items-center">
+      <ul class="navbar-nav">
+      </ul>
+      <form class="ml-auto search-form d-none d-md-block" action="#">
+        <div class="form-group">
+          <input type="search" class="form-control" placeholder="Search Here">
+        </div>
+      </form>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0" aria-labelledby="messageDropdown">
+            
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item">
+              <div class="preview-thumbnail">
+                <p>{{ nama }}</p>
+              </div>
+              <div class="preview-item-content flex-grow py-2">
+                <p class="preview-subject ellipsis font-weight-medium text-dark">Marian Garner </p>
+                <p class="font-weight-light small-text"> The meeting is cancelled </p>
+              </div>
+            </a>
+          </div>
+        
+        <li class="nav-item dropdown d-none d-xl-inline-block user-dropdown">
+          <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+            <p style="margin-right: 20px;"><strong>{{ user }}</strong></p>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+            <div class="dropdown-header text-center">
+              <p class="mb-1 mt-3 font-weight-semibold">{{user}}</p>
+              <p class="font-weight-light text-muted mb-0">{{user}}@gmail.com</p>
+            </div>
+            <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
+            <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+          </div>
+        </li>
+      </ul>
+      <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+        <span class="mdi mdi-menu"></span>
+      </button>
+    </div>
+  </nav>
+  <!-- partial -->
+  <div class="container-fluid page-body-wrapper">
+    <!-- partial:../../partials/_sidebar.html -->
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item nav-profile">
+          <a href="#" class="nav-link">
+            <div class="text-wrapper">
+              <p style="text-align: center;" class="profile-name">{{user}}</p>
+              <p class="designation">{{user}}@gmail.com</p>
+            </div>
+          </a>
+        </li>
+        <li class="nav-item nav-category">Main Menu</li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="menu-icon typcn typcn-document-text"></i>
+            <span class="menu-title">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <i class="menu-icon typcn typcn-coffee"></i>
+            <span class="menu-title">Data</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="ui-basic">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'pengajar' %}">Pengajar</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'murid' %}">Murid</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <i class="menu-icon typcn typcn-document-add"></i>
+            <span class="menu-title">User Pages</span>
+            <i class="menu-arrow"></i>
+          </a>
+          <div class="collapse" id="auth">
+            <ul class="nav flex-column sub-menu">
+              <li class="nav-item">
+                <a class="nav-link" href="../../pages/samples/login.html"> Login </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../../pages/samples/register.html"> Register </a>
+              </li>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Data Pengajar</h4>
+                    <p class="card-description"> ini adalah data Pengajar </p>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th> no </th>
+                          <th> nama </th>
+                          <th> Nomor </th>
+                          <th> alamat </th>
+                          <th> biaya </th>
+                          <th> usia </th>
+                          <th> action </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for guru in data %}
+                        <tr>
+                          <td class="py-1">
+                            {{ forloop.counter }}
+                            <!-- <img src="{% static 'asset/images/faces-clipart/pic-1.png' %}" alt="image" /> -->
+                          </td> 
+                          <td> {{guru.nama}} </td>
+                          <td> {{guru.nohp}} </td>
+                          <td> {{guru.alamat}} </td>
+                          <td> {{guru.biaya}} </td>
+                          <td> {{guru.usia}} </td>
+                          <td>
+                            <a href="{{ guru.id }}/detailguru" class="view" title="View" data-toggle="tooltip"><i class="material-icons">&#xE417;</i></a>
+                            <a href="{{ guru.id }}/editguru" class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a href="{{ guru.id }}/deleteguru" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:../../partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid clearfix">
+              <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free Bootstrap admin templates from <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrapdash.com</a></span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+ {% endblock %}

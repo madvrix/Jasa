@@ -1,0 +1,29 @@
+{% extends 'style.html' %}
+{% load static %}
+{% block content %}
+{%load crispy_forms_tags %} 
+
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">Packet Forms</h2>
+                </div>
+                <div class="card-body">
+                    {% if registered %}
+                        <h3>berhasil</h3>
+                    {% else %}
+                        <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        {{ hr|crispy }}
+                        <input type="submit" name="" value="Register">
+                        </form>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

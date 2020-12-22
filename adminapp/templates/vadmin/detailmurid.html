@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+        <div class="container px-lg-5"> 
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <h1 class="text-center">DETAIL</h1><br>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 310px;" class="bs-example">
+                <div class="card" style="width: 25rem;">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Nama : {{data.nama}}</li>
+                        <li class="list-group-item">Alamat : {{data.alamat}}</li>
+                        <li class="list-group-item">No hp : {{data.nohp}}</li>
+                        <li class="list-group-item">Pendidikan : {{data.pendidikan}}</li>
+                        <li class="list-group-item">Kelamin : {{data.kelamin}}</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="{% url 'murid' %}" style="margin-left: 200px;" class="btn btn-danger" class="card-link">Back</a>
+                    </div>
+                </div>
+            </div>
+                                
+ {% endblock %}
